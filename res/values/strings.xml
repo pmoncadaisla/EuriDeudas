@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Euri Deudas</string>
+    <string name="title_section3">Añadir movimiento</string>
+    <string name="title_section2">Movimientos</string>
+    <string name="title_section1">Información de la cuenta</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Configuración</string>
+
+</resources>
