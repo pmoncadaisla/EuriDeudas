@@ -112,7 +112,7 @@ public  class InfoFragment extends Fragment{
 						e.printStackTrace();
 					}
     	        	
-    	        	du.setDatos(euri.get("infouser"));
+    	        	du.setDatos(euri.get("userinfo"));
     	        	du.setDeuda(euri.get("deuda"));
     	      
     	        	

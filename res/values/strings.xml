@@ -7,5 +7,9 @@
     <string name="title_section1">Información de la cuenta</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Configuración</string>
+    <string name="recarga">Recarga de 10 impresiones</string>
+    <string name="euro">€</string>
+    <string name="precio">10.25</string>
+    <string name="timestamp">20-04-2013 12:48:00</string>
 
 </resources>
