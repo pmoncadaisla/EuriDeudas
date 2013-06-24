@@ -91,6 +91,9 @@ public class MainActivity extends FragmentActivity {
         	case 0:
         		fragment = new InfoFragment();
         		break;
+        	case 1:
+        		fragment = new MovimientosFragment();
+        		break;
         	default:
         		fragment = new DummySectionFragment();
                 Bundle args = new Bundle();
