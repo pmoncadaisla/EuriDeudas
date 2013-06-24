@@ -71,6 +71,19 @@ public  class InfoFragment extends Fragment{
     		 deuda.setText(String.valueOf(datos.getDeuda()));
     		 foto.setImageBitmap(PictUtil.loadFromCacheFile());
     		 
+    		 loadContent();
+    		 
+    		 
+    		 
+    	 }
+    	 
+    	 @Override
+    	 public void onResume(){
+    		 super.onResume();
+    		 loadContent();
+    	 }
+    	 
+    	 private void loadContent(){
     		 if(this.isNetworkAvailable()){
 	    		 GetInfoTask task = new GetInfoTask();
 	    		 task.execute();
@@ -78,8 +91,6 @@ public  class InfoFragment extends Fragment{
     			 Toast.makeText(context,
     	                    "No hay conexión a internet", Toast.LENGTH_LONG).show();
     		 }
-    		 
-    		 
     	 }
     	 
     	 private class GetInfoTask extends AsyncTask<Void, Void, DatosUsuario> {
