@@ -32,6 +32,8 @@ public class Euri {
     private String username;
     private String password;
     private String endpoint = "http://www.eurielec.etsit.upm.es/helpers/json.php";
+    private String productosEndPoint = "http://www.eurielec.etsit.upm.es/helpers/productos.php";
+    private String neveraEndPoint = "http://www.eurielec.etsit.upm.es/helpers/socios.php";
     CookieStore cookies;
 
     /**
@@ -44,6 +46,10 @@ public class Euri {
         this.password = password;
         getCookie();
         
+    }
+    
+    public Euri(){
+    	
     }
 
     /**
@@ -101,9 +107,7 @@ public class Euri {
             nvps.add(new BasicNameValuePair("action", action));
 
             httpost.setEntity(new UrlEncodedFormEntity(nvps, HTTP.UTF_8));
-
-            HttpResponse response = httpclient.execute(httpost);
-            
+            HttpResponse response = httpclient.execute(httpost);            
             
             HttpEntity entity = response.getEntity();
             entity = response.getEntity();
@@ -121,6 +125,102 @@ public class Euri {
         }
         return "error";
 
+    }
+    
+    /**
+     * Pagina solicitada
+     * @param accion Ejemplo: "userinfo"
+     * @return
+     */
+    public String putDeuda(String item, String precio){
+
+    	this.getCookie();
+        DefaultHttpClient httpclient = new DefaultHttpClient();
+        httpclient.setCookieStore(this.cookies);
+        
+
+        try{
+            HttpPost httpost = new HttpPost(this.neveraEndPoint);
+
+            List <NameValuePair> nvps = new ArrayList <NameValuePair>();
+            nvps.add(new BasicNameValuePair("item", item));
+            nvps.add(new BasicNameValuePair("precio", precio));
+            nvps.add(new BasicNameValuePair("tipo", "plus"));
+            nvps.add(new BasicNameValuePair("action", "nevera"));
+
+            httpost.setEntity(new UrlEncodedFormEntity(nvps, HTTP.UTF_8));
+
+            HttpResponse response = httpclient.execute(httpost);            
+            
+            HttpEntity entity = response.getEntity();
+            entity = response.getEntity();          
+            
+
+            return  EntityUtils.toString(entity);
+
+        } catch (ClientProtocolException e) {
+        	Log.d("exception", e.toString());
+        } catch (IOException e){
+        	Log.d("exception", e.toString());
+        } finally{
+            httpclient.getConnectionManager().shutdown();
+        }
+        return "error";
+
+    }
+    
+    /**
+     * Para devolver las categorias
+     * @param accion Ejemplo: "userinfo"
+     * @return
+     */
+    public String getCategorias(){
+    	
+        DefaultHttpClient httpclient = new DefaultHttpClient();
+        try{
+            HttpPost httpost = new HttpPost(productosEndPoint);
+            HttpResponse response = httpclient.execute(httpost);
+            HttpEntity entity = response.getEntity();
+            entity = response.getEntity();
+
+            return  EntityUtils.toString(entity);
+
+        } catch (ClientProtocolException e) {
+        	Log.d("exception", e.toString());
+        } catch (IOException e){
+        	Log.d("exception", e.toString());
+        } finally{
+            httpclient.getConnectionManager().shutdown();
+        }
+        return "error";
+    }
+    
+    /**
+     * Para devolver las categorias
+     * @param accion Ejemplo: "userinfo"
+     * @return
+     */
+    public String getProductos(int cid){
+    	
+        DefaultHttpClient httpclient = new DefaultHttpClient();
+        String url = productosEndPoint + "?cid=" + cid;
+        Log.d("getProductos", url);
+        try{
+            HttpPost httpost = new HttpPost(url);
+            HttpResponse response = httpclient.execute(httpost);
+            HttpEntity entity = response.getEntity();
+            entity = response.getEntity();
+            
+            return  EntityUtils.toString(entity);
+            
+        } catch (ClientProtocolException e) {
+        	Log.d("exception", e.toString());
+        } catch (IOException e){
+        	Log.d("exception", e.toString());
+        } finally{
+            httpclient.getConnectionManager().shutdown();
+        }
+        return "error";
     }
 
 

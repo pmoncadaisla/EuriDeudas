@@ -92,6 +92,9 @@ public class MainActivity extends FragmentActivity {
         		fragment = new InfoFragment();
         		break;
         	case 1:
+        		fragment = new CategoriasFragment();
+        		break;
+        	case 2:        		
         		fragment = new MovimientosFragment();
         		break;
         		
@@ -118,9 +121,9 @@ public class MainActivity extends FragmentActivity {
                 case 0:
                     return getString(R.string.title_section1).toUpperCase();
                 case 1:
-                    return getString(R.string.title_section2).toUpperCase();
-                case 2:
                     return getString(R.string.title_section3).toUpperCase();
+                case 2:
+                    return getString(R.string.title_section2).toUpperCase();
             }
             return null;
         }

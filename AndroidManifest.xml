@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="14"
         android:targetSdkVersion="17" />
     
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -33,7 +33,7 @@
             
         </activity>
         <activity
-		   android:name="es.moncadaisla.eurideudas.PrefsActivity" android:label="NFC/TechFilter">
+		   android:name="es.moncadaisla.eurideudas.PrefsActivity">
             <intent-filter>
 			    <action android:name="android.nfc.action.TECH_DISCOVERED" />
 			    <action android:name="android.nfc.action.TAG_DISCOVERED" />
@@ -42,6 +42,10 @@
 			<meta-data android:name="android.nfc.action.TECH_DISCOVERED"
          android:resource="@xml/nfc"
     		 />
+		</activity>
+		<activity
+		   android:name="es.moncadaisla.eurideudas.ProductosActivity">
+            
 		</activity>
     </application>
 
